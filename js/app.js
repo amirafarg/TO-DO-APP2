@@ -36,7 +36,7 @@ function addNewTask(event) {
         return
     }
 
-    const list = document.createElement('sign');
+    const list = document.createElement('li');
 
     list.innerHTML = `
         <img class="squer" src="./img/input.svg" alt="">
@@ -61,6 +61,7 @@ function toDoBtn() {
 
     }
 }
+
 function doneBtn() {
 
 }
