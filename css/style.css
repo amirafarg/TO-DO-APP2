@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+ul {
+    margin-left: 0;
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+}
+
+:root {
+    /* colors */
+    --back-sec: #F5F5F5;
+    --grey: #808080;
+    --black: #1E1E1E;
+    --green: #09B285;
+
+    /* font-family */
+    --font-family: 'Inter';
+
+    font-size: 16px;
+}
+
+.rows {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-6 {
+    width: calc(100% / 12 * 6);
+}
+
+.col-12 {
+    width: calc(100% / 12 * 12);
+}
+
+/* design-start */
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+.sec-list {
+    background: var(--back-sec);
+    box-shadow: -4px 0px 20px 4px rgba(0, 0, 0, 0.10);
+    padding: 6rem 5rem;
+}
+
+.div-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-group {
+    border-radius: 0.5rem;
+    background: white;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.10);
+    border: 0;
+    padding: 0.75rem 1.125rem;
+    padding-right: 10rem;
+}
+
+input[type=text] {
+    color: var(--grey);
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: normal;
+    outline: none;
+}
