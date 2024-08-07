@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: var(--font-family);
+    flex-shrink: 0;
 }
 
 ul {
@@ -38,9 +39,9 @@ button {
     width: calc(100% / 12 * 6);
 }
 
-.col-12 {
+/* .col-12 {
     width: calc(100% / 12 * 12);
-}
+} */
 
 /* design-start */
 .container {
@@ -59,8 +60,7 @@ button {
     display: flex;
     flex-direction: column;
     row-gap: 1.5rem;
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
 }
 
 .input-group {
@@ -79,3 +79,136 @@ input[type=text] {
     line-height: normal;
     outline: none;
 }
+
+.flex-btns {
+    display: flex;
+    align-items: stretch;
+    gap: 1.5rem;
+    margin-right: 5.2rem;
+}
+
+.btn-all,
+.btn-to-do,
+.btn-done {
+    background: white;
+    padding: 0.9rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.10);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.num {
+    color: var(--green);
+    font-weight: 600;
+}
+
+.btn-all.check {
+    background-color: var(--green);
+    color: white;
+}
+
+.btn-to-do.check {
+    background-color: var(--green);
+    color: white;
+}
+
+.btn-done.check {
+    background-color: var(--green);
+    color: white;
+}
+
+.num.check {
+    color: var(--green);
+    font-weight: 600;
+}
+
+#taskList {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 0.5rem;
+}
+
+.sign {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.10);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sign span {
+    color:var(--black);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sign span.checked {
+    color: var(--grey);
+    text-decoration: line-through;
+}
+
+.squer-js {
+    display: none;
+}
+
+.squer-js.checked {
+    display: block;
+}
+
+.delete-btn {
+    opacity: 0;
+    margin-left: auto;
+}
+
+li:hover .delete-btn {
+    opacity: 0.6;
+    margin-left: auto;
+}
+
+/* li::before {
+    content: '';
+    color: var(--green);
+    border: 1px solid white;
+}
+
+li.checked::before {
+    content: '✓';
+} */
+
+
+/* mobile */
+@media screen and (max-width:900px) {
+    .body {
+        flex-direction: column;
+        row-gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sec-card .container {
+        width: 70%;
+    }
+
+    .container img {
+        width: 100%;
+    }
+
+    .col-12 {
+        width: calc(100% / 12 * 12);
+    }
+
+    .sec-list .container {
+        width: 50%;
+    }
+
+}
+
+
+
