@@ -1,16 +1,16 @@
 const ul = document.getElementById("taskList");
 const list = document.querySelector(".sign");
 const input = document.querySelector(".squer-js");
-const addForm = document.querySelector("#add-form");
+const addForm = document.getElementById("add-form");
 const allBtn =document.querySelector(".btn-all");
 const toDoBtn =document.querySelector(".btn-to-do");
 const doneBtn =document.querySelector(".btn-done");
 
 ul.addEventListener('click', checkList);
 addForm.addEventListener('submit', addNewTask);
-allBtn.addEventListener('click', allBtn);
-toDoBtn.addEventListener('click', toDoBtn);
-doneBtn.addEventListener('click', doneBtn);
+allBtn.addEventListener('click', allFunction);
+toDoBtn.addEventListener('click', toDoFunction);
+doneBtn.addEventListener('click', doneFunctin);
 
 
 function checkList(event) {
@@ -39,8 +39,6 @@ function addNewTask(event) {
     const list = document.createElement('li');
 
     list.innerHTML = `
-        <img class="squer" src="./img/input.svg" alt="">
-
         <span>${addForm.task.value}</span>
 
         <button class="btn-delet">✕</button>
@@ -51,17 +49,17 @@ function addNewTask(event) {
     addForm.reset();
 }
 
-function allBtn() {
+function allFunction() {
 
 }
 
-function toDoBtn() {
+function toDoFunction() {
     for(let item of listItems) {
         if (item.classList.contains('checked'));
 
     }
 }
 
-function doneBtn() {
+function doneFunctin() {
 
 }
