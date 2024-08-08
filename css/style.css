@@ -210,11 +210,11 @@ li:hover .delete-btn {
     color: white;
 }
 
-.num.active {
+button.active .num {
     color: white;
 }
 
-li.hidden {
+.sign.hidden {
     display: none;
 }
 
