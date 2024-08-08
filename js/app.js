@@ -41,7 +41,7 @@ function addNewTask(event) {
     list.innerHTML = `
         <span>${addForm.task.value}</span>
 
-        <button class="btn-delet">✕</button>
+        <button class="delete-btn">✕</button>
     `;
 
     ul.appendChild(list);
