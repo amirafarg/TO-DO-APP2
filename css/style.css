@@ -214,10 +214,6 @@ li:hover .delete-btn {
     color: white;
 }
 
-li.checked {
-    display: block;
-}
-
 li.hidden {
     display: none;
 }
