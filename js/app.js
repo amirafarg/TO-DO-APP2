@@ -1,12 +1,11 @@
 const ul = document.getElementById("taskList");
-const list = document.querySelector(".sign");
+// const list = document.querySelector(".sign");
 const input = document.querySelector(".squer-js");
 const addForm = document.getElementById("add-form");
 const allBtn = document.querySelector(".btn-all");
 const toDoBtn = document.querySelector(".btn-to-do");
 const doneBtn = document.querySelector(".btn-done");
-const listItems = document.querySelectorAll("#taskList li");
-const item = document.querySelector('.sign');
+let listItems = document.querySelectorAll("#taskList li");
 
 ul.addEventListener('click', checkList);
 addForm.addEventListener('submit', addNewTask);
@@ -46,6 +45,8 @@ function addNewTask(event) {
     `;
 
     ul.appendChild(list);
+    listItems = document.querySelectorAll("#taskList li");
+    console.log(listItems);
 
     addForm.reset();
 }
@@ -53,11 +54,11 @@ function addNewTask(event) {
 function allFunction() {
     for (let list of listItems) {
         list.classList.remove('hidden');
-
-        toDoBtn.classList.remove('active');
-        allBtn.classList.add('active');
-        doneBtn.classList.remove('active');
     }
+
+    toDoBtn.classList.remove('active');
+    allBtn.classList.add('active');
+    doneBtn.classList.remove('active');
 }
 
 function toDoFunction() {
@@ -65,14 +66,14 @@ function toDoFunction() {
         if (list.classList.contains('checked')) {
             list.classList.add('hidden');
 
-        } else if (list.classList.contains('checked')) {
-            item.classList.remove('hidden');
+        } else {
+            list.classList.remove('hidden');
         };
-
-        toDoBtn.classList.add('active');
-        allBtn.classList.remove('active');
-        doneBtn.classList.remove('active');
     }
+
+    toDoBtn.classList.add('active');
+    allBtn.classList.remove('active');
+    doneBtn.classList.remove('active');
 }
 
 function doneFunctin() {
@@ -80,12 +81,12 @@ function doneFunctin() {
         if (list.classList.contains('checked')) {
             list.classList.remove('hidden');
         }
-        else if (list.classList.contains('checked')) {
-            item.classList.add('hidden');
+        else {
+            list.classList.add('hidden');
         }
-
-        toDoBtn.classList.remove('active');
-        allBtn.classList.remove('active');
-        doneBtn.classList.add('active');
     }
+
+    toDoBtn.classList.remove('active');
+    allBtn.classList.remove('active');
+    doneBtn.classList.add('active');
 }
