@@ -157,6 +157,11 @@ li {
 
 li::before {
     content: url('../img/input.svg');
+    height: 48px;
+    width: 21px;
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
 }
 
 li.checked::before {
@@ -214,7 +219,7 @@ button.active .num {
     color: white;
 }
 
-.sign.hidden {
+li.hidden {
     display: none;
 }
 

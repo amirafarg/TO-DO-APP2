@@ -1,11 +1,12 @@
 const ul = document.getElementById("taskList");
-// const list = document.querySelector(".sign");
-const input = document.querySelector(".squer-js");
 const addForm = document.getElementById("add-form");
 const allBtn = document.querySelector(".btn-all");
 const toDoBtn = document.querySelector(".btn-to-do");
 const doneBtn = document.querySelector(".btn-done");
 let listItems = document.querySelectorAll("#taskList li");
+const allBtnCounters = document.querySelector("#all-cont .num");
+const doneBtnCounters = document.querySelector("#to-do-cont .num");
+const toDoBtnCounters = document.querySelector("#done-cont .num");
 
 ul.addEventListener('click', checkList);
 addForm.addEventListener('submit', addNewTask);
@@ -19,6 +20,30 @@ function checkList(event) {
 
     if (event.target.nodeName === 'LI') {
         event.target.classList.toggle("checked");
+    }
+
+    const allCount = listItems.length;
+    let toDoCount = 0;
+    let doneCount = 0;
+
+    for (let item of listItems) {
+        if (item.classList.contains('checked')) {
+            toDoCount++;
+            doneCount--;
+        } else {
+            toDoCount--;
+            doneCount++;
+        }
+    }
+
+    allBtnCounters.textContent = `(${allCount})`;
+    toDoBtnCounters.textContent = `(${toDoCount})`;
+    doneBtnCounters.textContent = `(${doneCount})`;
+
+    if (!allBtn.classList.contains('active')) {
+        setTimeout(() => {
+            event.target.classList.add('hidden');
+        }, 200);
     }
 
     if (event.target.nodeName === 'BUTTON') {
@@ -36,24 +61,23 @@ function addNewTask(event) {
         return
     }
 
-    const list = document.createElement('li');
+    const item = document.createElement('li');
 
-    list.innerHTML = `
+    item.innerHTML = `
         <span>${addForm.task.value}</span>
 
         <button class="delete-btn">✕</button>
     `;
 
-    ul.appendChild(list);
+    ul.appendChild(item);
     listItems = document.querySelectorAll("#taskList li");
-    console.log(listItems);
 
     addForm.reset();
 }
 
 function allFunction() {
-    for (let list of listItems) {
-        list.classList.remove('hidden');
+    for (let item of listItems) {
+        item.classList.remove('hidden');
     }
 
     toDoBtn.classList.remove('active');
@@ -62,12 +86,12 @@ function allFunction() {
 }
 
 function toDoFunction() {
-    for (let list of listItems) {
-        if (list.classList.contains('checked')) {
-            list.classList.add('hidden');
+    for (let item of listItems) {
+        if (item.classList.contains('checked')) {
+            item.classList.add('hidden');
 
         } else {
-            list.classList.remove('hidden');
+            item.classList.remove('hidden');
         };
     }
 
@@ -77,16 +101,43 @@ function toDoFunction() {
 }
 
 function doneFunctin() {
-    for (let list of listItems) {
-        if (list.classList.contains('checked')) {
-            list.classList.remove('hidden');
+    for (let item of listItems) {
+        if (item.classList.contains('checked')) {
+            item.classList.remove('hidden');
         }
         else {
-            list.classList.add('hidden');
+            item.classList.add('hidden');
         }
     }
+
+    // if (doneBtn.classList.contains('active')) {
+    //     item.classList.add('hidden');
+    // }
 
     toDoBtn.classList.remove('active');
     allBtn.classList.remove('active');
     doneBtn.classList.add('active');
 }
+
+// function filterBtnsCount() {
+//     const allCount = listItems.length;
+//     let toDoCount = 0;
+//     let doneCount = 0;
+
+//     for (let item of listItems) {
+//         if (item.classList.contains('checked')) {
+//             toDoCount++;
+//             doneCount--;
+//         } else {
+//             toDoCount--;
+//             doneCount++;
+//         }
+//     }
+
+//     allBtnCounters.textContent = `(${allCount})`;
+//     toDoBtnCounters.textContent = `(${toDoCount})`;
+//     doneBtnCounters.textContent = `(${doneCount})`;
+
+//     console.log(allBtnCounters, doneBtnCounters, toDoBtnCounters);
+// }
+// filterBtnsCount();
