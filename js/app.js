@@ -5,8 +5,8 @@ const toDoBtn = document.querySelector(".btn-to-do");
 const doneBtn = document.querySelector(".btn-done");
 let listItems = document.querySelectorAll("#taskList li");
 const allBtnCounters = document.querySelector("#all-cont .num");
-const doneBtnCounters = document.querySelector("#to-do-cont .num");
-const toDoBtnCounters = document.querySelector("#done-cont .num");
+const doneBtnCounters = document.querySelector("#done-cont .num");
+const toDoBtnCounters = document.querySelector("#to-do-cont .num ");
 
 ul.addEventListener('click', checkList);
 addForm.addEventListener('submit', addNewTask);
@@ -14,31 +14,13 @@ allBtn.addEventListener('click', allFunction);
 toDoBtn.addEventListener('click', toDoFunction);
 doneBtn.addEventListener('click', doneFunctin);
 
-
 function checkList(event) {
     console.log(event.target.nodeName);
 
     if (event.target.nodeName === 'LI') {
         event.target.classList.toggle("checked");
+        filterBtnsCount();
     }
-
-    const allCount = listItems.length;
-    let toDoCount = 0;
-    let doneCount = 0;
-
-    for (let item of listItems) {
-        if (item.classList.contains('checked')) {
-            toDoCount++;
-            doneCount--;
-        } else {
-            toDoCount--;
-            doneCount++;
-        }
-    }
-
-    allBtnCounters.textContent = `(${allCount})`;
-    toDoBtnCounters.textContent = `(${toDoCount})`;
-    doneBtnCounters.textContent = `(${doneCount})`;
 
     if (!allBtn.classList.contains('active')) {
         setTimeout(() => {
@@ -48,6 +30,7 @@ function checkList(event) {
 
     if (event.target.nodeName === 'BUTTON') {
         ul.removeChild(event.target.parentElement);
+        filterBtnsCount();
     }
 }
 
@@ -72,7 +55,12 @@ function addNewTask(event) {
     ul.appendChild(item);
     listItems = document.querySelectorAll("#taskList li");
 
+    if (doneBtn.classList.contains('active')) {
+        item.classList.add('hidden');
+    }
+
     addForm.reset();
+    filterBtnsCount();
 }
 
 function allFunction() {
@@ -110,34 +98,30 @@ function doneFunctin() {
         }
     }
 
-    // if (doneBtn.classList.contains('active')) {
-    //     item.classList.add('hidden');
-    // }
-
     toDoBtn.classList.remove('active');
     allBtn.classList.remove('active');
     doneBtn.classList.add('active');
 }
 
-// function filterBtnsCount() {
-//     const allCount = listItems.length;
-//     let toDoCount = 0;
-//     let doneCount = 0;
+function filterBtnsCount() {
+    listItems = document.querySelectorAll("#taskList li");
 
-//     for (let item of listItems) {
-//         if (item.classList.contains('checked')) {
-//             toDoCount++;
-//             doneCount--;
-//         } else {
-//             toDoCount--;
-//             doneCount++;
-//         }
-//     }
+    let allCount = listItems.length;
+    let toDoCount = 0;
+    let doneCount = 0;
 
-//     allBtnCounters.textContent = `(${allCount})`;
-//     toDoBtnCounters.textContent = `(${toDoCount})`;
-//     doneBtnCounters.textContent = `(${doneCount})`;
+    for (let item of listItems) {
+        if (item.classList.contains('checked')) {
+            doneCount++;
+        } else {
+            toDoCount++;
+        }
+    }
 
-//     console.log(allBtnCounters, doneBtnCounters, toDoBtnCounters);
-// }
-// filterBtnsCount();
+    allBtnCounters.textContent = `(${allCount})`;
+    toDoBtnCounters.textContent = `(${toDoCount})`;
+    doneBtnCounters.textContent = `(${doneCount})`;
+
+    console.log(allBtnCounters, doneBtnCounters, toDoBtnCounters);
+}
+filterBtnsCount();
